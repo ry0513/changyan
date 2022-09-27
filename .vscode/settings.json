@@ -1,0 +1,16 @@
+{
+    "easysass.targetDir": "./static/css",
+    "easysass.formats": [
+    
+        {
+            "format": "expanded",
+            "extension": ".css"
+        },
+        {
+            "format": "compressed",
+            "extension": ".min.css"
+        }
+    ],
+    "easysass.excludeRegex": "^_+",
+    "html.validate.styles": false
+}

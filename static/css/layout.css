@@ -1,0 +1,314 @@
+@charset "UTF-8";
+/* ==================
+    定义基础变量
+  ==================== */
+/* ==================
+    去除默认
+  ==================== */
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #ededed;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    max-width: 500px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ==================
+    间距
+  ==================== */
+.m-xs {
+  margin: 5px;
+}
+
+.mt-xs,
+.my-xs {
+  margin-top: 5px;
+}
+
+.mb-xs,
+.my-xs {
+  margin-bottom: 5px;
+}
+
+.ml-xs,
+.mx-xs {
+  margin-left: 5px;
+}
+
+.mr-xs,
+.mx-xs {
+  margin-right: 5px;
+}
+
+.p-xs {
+  padding: 5px;
+}
+
+.pt-xs,
+.py-xs {
+  padding-top: 5px;
+}
+
+.pb-xs,
+.py-xs {
+  padding-bottom: 5px;
+}
+
+.pl-xs,
+.px-xs {
+  padding-left: 5px;
+}
+
+.pr-xs,
+.px-xs {
+  padding-right: 5px;
+}
+
+.m-sm {
+  margin: 10px;
+}
+
+.mt-sm,
+.my-sm {
+  margin-top: 10px;
+}
+
+.mb-sm,
+.my-sm {
+  margin-bottom: 10px;
+}
+
+.ml-sm,
+.mx-sm {
+  margin-left: 10px;
+}
+
+.mr-sm,
+.mx-sm {
+  margin-right: 10px;
+}
+
+.p-sm {
+  padding: 10px;
+}
+
+.pt-sm,
+.py-sm {
+  padding-top: 10px;
+}
+
+.pb-sm,
+.py-sm {
+  padding-bottom: 10px;
+}
+
+.pl-sm,
+.px-sm {
+  padding-left: 10px;
+}
+
+.pr-sm,
+.px-sm {
+  padding-right: 10px;
+}
+
+.m-md {
+  margin: 15px;
+}
+
+.mt-md,
+.my-md {
+  margin-top: 15px;
+}
+
+.mb-md,
+.my-md {
+  margin-bottom: 15px;
+}
+
+.ml-md,
+.mx-md {
+  margin-left: 15px;
+}
+
+.mr-md,
+.mx-md {
+  margin-right: 15px;
+}
+
+.p-md {
+  padding: 15px;
+}
+
+.pt-md,
+.py-md {
+  padding-top: 15px;
+}
+
+.pb-md,
+.py-md {
+  padding-bottom: 15px;
+}
+
+.pl-md,
+.px-md {
+  padding-left: 15px;
+}
+
+.pr-md,
+.px-md {
+  padding-right: 15px;
+}
+
+.m-lg {
+  margin: 20px;
+}
+
+.mt-lg,
+.my-lg {
+  margin-top: 20px;
+}
+
+.mb-lg,
+.my-lg {
+  margin-bottom: 20px;
+}
+
+.ml-lg,
+.mx-lg {
+  margin-left: 20px;
+}
+
+.mr-lg,
+.mx-lg {
+  margin-right: 20px;
+}
+
+.p-lg {
+  padding: 20px;
+}
+
+.pt-lg,
+.py-lg {
+  padding-top: 20px;
+}
+
+.pb-lg,
+.py-lg {
+  padding-bottom: 20px;
+}
+
+.pl-lg,
+.px-lg {
+  padding-left: 20px;
+}
+
+.pr-lg,
+.px-lg {
+  padding-right: 20px;
+}
+
+/* ==================
+    颜色
+  ==================== */
+:root {
+  --color-white: #ffffff;
+  --color-grey: #ededed;
+  --color-red: #ff5722;
+  --color-black: #373737;
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.fc-white {
+  color: var(--color-white);
+}
+
+.bg-grey {
+  background-color: var(--color-grey);
+}
+
+.fc-grey {
+  color: var(--color-grey);
+}
+
+.bg-red {
+  background-color: var(--color-red);
+}
+
+.fc-red {
+  color: var(--color-red);
+}
+
+.bg-black {
+  background-color: var(--color-black);
+}
+
+.fc-black {
+  color: var(--color-black);
+}
+
+.fs-12 {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.fs-14 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.fs-16 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.fs-18 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.fs-20 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* ==================
+    布局
+  ==================== */
+.flex {
+  display: flex;
+}
+
+.flex-jc_sb {
+  display: flex;
+  justify-content: space-between;
+}

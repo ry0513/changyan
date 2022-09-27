@@ -1,0 +1,72 @@
+.card {
+  border-radius: 5px;
+}
+
+.card-header .card-header_avatar {
+  width: 44px;
+  height: 44px;
+  background: 50% 50% no-repeat var(--color-grey);
+  background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202002%2F04%2F20200204151601_kZRhd.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1666860784&t=a7ee5bc7334b83377ca0c705f7239398);
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.card-header .card-header_time {
+  color: #a6a6a6;
+}
+
+.card-header_right {
+  width: 16px;
+  height: 44px;
+  background: 50% 50% no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAZ1JREFUOE+N0z1oFEEUB/D39jiwUhuJ2IkpPCGlIdX5/rMgpg16CIJJFcsrYxktxNZK/GjSSQy2grnbN6yVWIWAJ6QRJCFgpU2K4+bJHHcxu65Zt5mdNzM/3tt5y1R68jy/NhwOO+V4nDebzc12u/3l5BqXN/b7/fUkSc5VASGEn2marv8FqOomEV2oOnRK7AeAzjgDVRUi2iKi2/+JjPcC8MclqOpuCOFWmqb7EfHe3xGRt/E9ljVNXVUvEtE2gLm4dgx47z+Y2ZOoTrJSInoU56pqAKbZLjDzYxG5WQY2zOwjgNc1wF1mXhSR5QKgqk/NjJ1zazXAQyI6DyCOf0pQ1S4zz4vIvRrgORF9BfCsAGRZtpQkSVdEbtQA783slXPuXfkbXA8hvHHOXakBBsx8X0Q+l0uI1/MNwJka4IiILgM4LACTQ79CCK3YC/Hup70fOzV2Xa/Xm2k0GnsAzk4brvAvqOrAzFacc5+qOjLP8/nRaLQBoFUJeO9fhBCuEtFOFcDMs8z8XUQeVAIxmGXZqpld+gdw4Jx7eXLtN7//8BEy/4yxAAAAAElFTkSuQmCC);
+}
+
+.card-text {
+  max-width: 500px;
+}
+
+.card-img {
+  max-width: 360px;
+}
+
+.card-img.grid9 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+.card-img.grid9 .card-img_item {
+  flex: 1 0 30%;
+  max-width: calc(100% / 3 - 10px) !important;
+  margin: 0 5px 10px;
+}
+
+.card-img.grid9 .card-img_item::after {
+  content: "";
+  padding-top: 100%;
+  display: block;
+}
+
+.card-img_item {
+  border-radius: 5px;
+  background: 50% 50% no-repeat;
+  background-size: cover;
+  max-width: 100% !important;
+}
+
+.card-img_item.loading {
+  background-color: var(--color-grey);
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%) var(--color-grey);
+  background-size: 400% 100%;
+  animation: 1.2s loading ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
