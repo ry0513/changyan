@@ -1,0 +1,33 @@
+<%_ dynamicData.forEach(item=> { _%>
+<div class="card radius bg-white mb-md p-md">
+  <div class="card-header mb-md flex-jc_sb">
+    <div class="card-header_left flex">
+      <div class="card-header_avatar mr-sm"></div>
+      <div>
+        <div><%= item.user.nickName %></div>
+        <div class="card-header_time"><%= dayjs(item.createdAt) %></div>
+      </div>
+    </div>
+    <!-- <div class="card-header_right"></div> -->
+  </div>
+  <div class="card-text mb-sm">
+    <div><%= item.content %></div>
+  </div>
+  <% if (item.images.length > 0) { %>
+  <% if (item.images.length===1) { %>
+  <div class="card-img">
+    <div class="card-img_item loadImg loading" data-url="<%= item.images[0].thumbnailUrl %>" style="
+                height: <%= item.images[0].thumbnailHeight %>px;
+                width: <%= item.images[0].thumbnailWidth %>px;
+            ">
+    </div>
+  </div>
+  <% } else { %>
+  <div class="card-img grid9">
+    <% item.images.forEach(img=> { %>
+    <div data-url="<%= img.thumbnailUrl %>" class="card-img_item loadImg loading"></div>
+    <% }) %>
+  </div>
+  <% } %> <% } %>
+</div>
+<%_ }) _%>

@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-export default (app) => {
+const RUOYU = require("../config/ruoyu");
+module.exports = (app) => {
     app.locals = {
         websiteTitle: "若",
         websiteDescription: "description",
@@ -13,7 +13,7 @@ export default (app) => {
         cdnUrl: "./",
         version: "0.0.1",
         dayjs: (date, format = "YYYY-MM-DD HH:mm:ss") => {
-            return dayjs(date).format(format);
+            return RUOYU.dayjs(date).format(format);
         },
     };
 };

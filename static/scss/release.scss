@@ -1,0 +1,47 @@
+.release {
+    border-radius: 5px;
+}
+.release-input textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    &:focus {
+        outline: none;
+    }
+}
+.release-img {
+    max-width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+    .release-img_item {
+        position: relative;
+        flex: 1 0 30%;
+        max-width: calc(100% / 3 - 10px) !important;
+        margin: 0 5px 10px;
+        border-radius: 5px;
+        background: 50% 50% no-repeat;
+        background-size: cover;
+        &::after {
+            content: "";
+            padding-top: 100%;
+            display: block;
+        }
+        .release-img_item_x {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            width: 20%;
+            height: 20%;
+            background: url("/icon/close.svg") rgba(0, 0, 0, 0.8) center center
+                no-repeat;
+            background-size: 50% 50%;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    }
+}
+.release-file {
+    display: none;
+    // background-color: red;
+}

@@ -10,7 +10,6 @@
   <meta name="apple-mobile-web-app-title" content="<%= RUOYU.appTitle %>" />
   <title><%= websiteTitle %></title>
   <link rel="stylesheet" href="<%= cdnUrl %>css/layout.min.css?v=<%= version %>" />
-  <link rel="stylesheet" href="<%= cdnUrl %>css/card.min.css?v=<%= version %>" />
   <!-- <link
             rel="stylesheet"
             href="<%= cdnUrl %>/plugin/notice/colored-theme.min.css?v=<%= version %>"
@@ -20,17 +19,18 @@
             href="<%= cdnUrl %>/css/layout.min.css?v=<%= version %>"
         /> -->
   <%_ cssList.forEach(item => { _%>
-  <link rel="stylesheet" href="<%= cdnUrl %>/<%= item %>.min.css?v=<%= version %>" />
+  <link rel="stylesheet" href="<%= cdnUrl %>css/<%= item %>.min.css?v=<%= version %>" />
   <%_ }) _%>
 </head>
 
 <body>
   <%- include(`../components/header`) %>
-  <div class="container py-md"><%- include(`../components/card`) %></div>
-
-  <script src="<%= cdnUrl %>js/test.js?v=<%= version %>"></script>
+  <div class="container py-md"> <%- include(`../pages/${page}`) %></div>
+  <script src="<%= cdnUrl %>js/dom.js?v=<%= version %>"></script>
+  <script src="<%= cdnUrl %>js/message.js?v=<%= version %>"></script>
+  <script src="<%= cdnUrl %>js/axios.min.js?v=<%= version %>"></script>
   <% jsList.forEach(item => { %>
-  <script src="<%= cdnUrl %>/<%= item %>.min.js?v=<%= version %>"></script>
+  <script src="<%= cdnUrl %>js/<%= item %>.js?v=<%= version %>"></script>
   <% }) %>
 </body>
 

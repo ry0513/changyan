@@ -103,3 +103,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Config.js
+src/config/config.js
+images/
