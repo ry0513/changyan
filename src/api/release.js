@@ -118,7 +118,6 @@ router.post(
                             true
                         )),
                     };
-                    console.log(iamgeInfo);
                     resolve(await createImage(iamgeInfo));
                 });
             })(item);

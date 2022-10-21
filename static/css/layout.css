@@ -314,3 +314,29 @@ a {
   display: flex;
   justify-content: space-between;
 }
+
+@font-face {
+  font-family: "iconfont";
+  /* Project id 3703905 */
+  src: url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff2?t=1666322588177") format("woff2"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff?t=1666322588177") format("woff"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.ttf?t=1666322588177") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-loading:before {
+  content: "\e676";
+}
+
+.icon-fabu:before {
+  content: "\e643";
+}
+
+.icon-guanbi:before {
+  content: "\e654";
+}

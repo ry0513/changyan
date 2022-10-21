@@ -25,7 +25,6 @@ router.get("/original/:path", (req, res) => {
         RUOYU.res.error(res, { data: "图片不存在" });
     }
 });
-console.log();
 router.use(
     "/thumbnail/",
     static(RUOYU.path(__dirname, "../../images/thumbnail"))
