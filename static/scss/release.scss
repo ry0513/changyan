@@ -27,25 +27,53 @@
             padding-top: 100%;
             display: block;
         }
-        .release-img_item_x {
+        .icon-close {
             position: absolute;
             right: 5%;
             top: 5%;
-            width: 20%;
-            height: 20%;
-            background: url("/icon/close.svg") rgba(0, 0, 0, 0.8) center center
-                no-repeat;
-            background-size: 50% 50%;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            text-align: center;
+            color: #fff;
             cursor: pointer;
             border-radius: 50%;
         }
     }
 }
+.release-button {
+    text-align: center;
+    line-height: 35px;
+    display: flex;
+    justify-content: space-between;
+    .release-usercode {
+        flex: 1 1 auto;
+        height: 35px;
+        border: var(--color-grey) 1px solid;
+        padding: 0 10px;
+        border-radius: 5px;
+        &:focus {
+            outline: none;
+        }
+    }
+    .iconfont {
+        width: 60px;
+        height: 35px;
+        font-size: 18px;
+        background-color: var(--color-grey);
+        border-radius: 5px;
+    }
+}
 .release-file {
     display: none;
-    // background-color: red;
 }
-
+.release-tip {
+    color: #a6a6a6;
+    .release-tip-content {
+        text-indent: 3em;
+    }
+}
 .upload {
     position: fixed;
     top: 0;

@@ -5,11 +5,23 @@ const { body, validationResult } = require("express-validator");
 const multer = require("../core/multer");
 const RUOYU = require("../config/ruoyu");
 const router = Router();
-const { createDynamic } = require("../db/api/dynamic");
-const { createImage } = require("../db/api/image");
+const { Dynamic, Image, User } = require("../db/api");
 
 router.post(
     "/",
+    async (req, res, next) => {
+        const [userId, userCode] = (req.headers["user-code"] || "").split("-");
+        const userInfo = await User.getUserInfo({
+            userId,
+            userCode,
+        });
+        if (userInfo) {
+            req.userInfo = userInfo;
+            next();
+        } else {
+            RUOYU.res.error(res, { data: "无效的身份码" });
+        }
+    },
     multer({
         fields: [{ name: "images", maxCount: 9 }],
         mimeType: RUOYU.mimeType.image,
@@ -34,11 +46,12 @@ router.post(
                 data: "文件实际类型错误",
             });
         }
+        const userId = req.userInfo.userId;
         const content = req.body.content;
         const images = req.files["images"];
         const clientInfo = RUOYU.clientInfo(req);
-        const dynamic = await createDynamic({
-            userId: 1,
+        const dynamic = await Dynamic.createDynamic({
+            userId,
             content,
             ...clientInfo,
         });
@@ -47,7 +60,7 @@ router.post(
             await ((item) => {
                 return new Promise(async (resolve, reject) => {
                     let iamgeInfo = {
-                        userId: 1,
+                        userId,
                         dynamicId: dynamic.dynamicId,
                         url: `/images/original/${
                             RUOYU.uuid() + RUOYU.extname(item.originalname)
@@ -118,7 +131,7 @@ router.post(
                             true
                         )),
                     };
-                    resolve(await createImage(iamgeInfo));
+                    resolve(await Image.createImage(iamgeInfo));
                 });
             })(item);
         }

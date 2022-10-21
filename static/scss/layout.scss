@@ -9,6 +9,16 @@
             format("truetype");
 }
 
+@font-face {
+    font-family: "iconfont"; /* Project id 3703905 */
+    src: url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff2?t=1666335918851")
+            format("woff2"),
+        url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff?t=1666335918851")
+            format("woff"),
+        url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.ttf?t=1666335918851")
+            format("truetype");
+}
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
@@ -17,14 +27,22 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-images:before {
+    content: "\e678";
+}
+
+.icon-release-send:before {
+    content: "\e604";
+}
+
 .icon-loading:before {
     content: "\e676";
 }
 
-.icon-fabu:before {
+.icon-release:before {
     content: "\e643";
 }
 
-.icon-guanbi:before {
+.icon-close:before {
     content: "\e654";
 }

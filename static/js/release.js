@@ -4,12 +4,13 @@
     const $file = $ry(".release-file");
     const $send = $ry(".release-button_send");
     const $imagesEl = $ry(".release-img");
+    const $usercode = $ry(".release-usercode");
 
     const fileList = [];
     const preview = (sort, url) => {
         const item_x = document.createElement("div");
         const item = document.createElement("div");
-        item_x.className = "release-img_item_x";
+        item_x.className = "iconfont icon-close";
         item.className = "release-img_item";
         item.append(item_x);
         item.setAttribute("sort", sort);
@@ -24,6 +25,10 @@
     $send.click(() => {
         if ($content.val().length === 0 && fileList.length === 0) {
             $msg.warning("内容和图片不可以都为空");
+            return;
+        }
+        if ($usercode.val() === "") {
+            $msg.warning("身份码不可以都为空");
             return;
         }
         const formData = new FormData();
@@ -45,6 +50,9 @@
             url: "/api/release",
             method: "post",
             data: formData,
+            headers: {
+                "User-Code": $usercode.val(),
+            },
             onUploadProgress: function (progressEvent) {
                 const complete =
                     ((progressEvent.loaded / progressEvent.total) * 100) | 0;
@@ -56,10 +64,11 @@
                 }
             },
         }).then(({ data }) => {
-            $ry(".upload").remove();
             if (data.code === 0) {
+                $ry(".upload-text").html("已完成 ^_^");
                 location.href = "/";
             } else {
+                $ry(".upload").remove();
                 $msg.error(data.data, 1500);
             }
         });
@@ -86,7 +95,7 @@
         $file.val("");
     });
 
-    $imagesEl.on("click", ".release-img_item_x", (e) => {
+    $imagesEl.on("click", ".icon-close", (e) => {
         const $el = $ry(e.target).parents(".release-img_item");
         fileList.splice(`${$el.attr("sort")}`, 1);
         $el.remove();

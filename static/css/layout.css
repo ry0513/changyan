@@ -18,6 +18,16 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -321,6 +331,12 @@ a {
   src: url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff2?t=1666322588177") format("woff2"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff?t=1666322588177") format("woff"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.ttf?t=1666322588177") format("truetype");
 }
 
+@font-face {
+  font-family: "iconfont";
+  /* Project id 3703905 */
+  src: url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff2?t=1666335918851") format("woff2"), url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff?t=1666335918851") format("woff"), url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.ttf?t=1666335918851") format("truetype");
+}
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
@@ -329,14 +345,22 @@ a {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-images:before {
+  content: "\e678";
+}
+
+.icon-release-send:before {
+  content: "\e604";
+}
+
 .icon-loading:before {
   content: "\e676";
 }
 
-.icon-fabu:before {
+.icon-release:before {
   content: "\e643";
 }
 
-.icon-guanbi:before {
+.icon-close:before {
   content: "\e654";
 }

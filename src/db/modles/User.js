@@ -10,6 +10,11 @@ const User = sequelize.define(
             primaryKey: true,
             comment: "userId",
         },
+        userCode: {
+            type: DataTypes.STRING(),
+            allowNull: false,
+            comment: "用户码",
+        },
         nickName: {
             type: DataTypes.STRING(20),
             allowNull: false,
