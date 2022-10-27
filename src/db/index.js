@@ -20,6 +20,17 @@ Image.belongsTo(User, { foreignKey: "userId" });
 
 (async () => {
     await sequelize.sync({ alter: true });
+    User.findOrCreate({
+        where: { userId: 1 },
+        defaults: {
+            userCode: "ry",
+            nickName: "小米",
+            avatar: "-",
+            ua: "-",
+            ip: "-",
+            city: "-",
+        },
+    });
 })();
 
 module.exports = modules;

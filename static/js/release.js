@@ -27,10 +27,11 @@
             $msg.warning("内容和图片不可以都为空");
             return;
         }
-        if ($usercode.val() === "") {
-            $msg.warning("身份码不可以都为空");
+        if (!$usercode.val().includes("-")) {
+            $msg.warning("身份码格式错误");
             return;
         }
+
         const formData = new FormData();
         formData.append("content", $content.val());
         fileList.forEach((item) => {
@@ -56,7 +57,6 @@
             onUploadProgress: function (progressEvent) {
                 const complete =
                     ((progressEvent.loaded / progressEvent.total) * 100) | 0;
-                console.log("上传进度", complete);
                 if (complete === 100) {
                     $ry(".upload-text").html("处理中 ^_^");
                 } else {
@@ -65,7 +65,7 @@
             },
         }).then(({ data }) => {
             if (data.code === 0) {
-                $ry(".upload-text").html("已完成 ^_^");
+                $ry(".upload-text").html("已完成，即将返回首页 ^_^");
                 location.href = "/";
             } else {
                 $ry(".upload").remove();

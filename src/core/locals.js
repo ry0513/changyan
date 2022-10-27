@@ -10,8 +10,8 @@ module.exports = (app) => {
         },
         cssList: [], // 占位，防止报错
         jsList: [], // 占位，防止报错
-        cdnUrl: "./",
-        version: "0.0.1",
+        cdnUrl: "/",
+        version: RUOYU.VERSION,
         dayjs: (date, format = "YYYY-MM-DD HH:mm:ss") => {
             return RUOYU.dayjs(date).format(format);
         },

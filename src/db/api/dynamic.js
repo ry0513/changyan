@@ -17,12 +17,7 @@ module.exports = {
             include: [
                 {
                     model: Image,
-                    attributes: [
-                        "url",
-                        "thumbnailUrl",
-                        "thumbnailWidth",
-                        "thumbnailHeight",
-                    ],
+                    attributes: ["imageId", "width", "height"],
                 },
                 {
                     model: User,

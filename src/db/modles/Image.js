@@ -4,10 +4,10 @@ const Image = sequelize.define(
     "image",
     {
         imageId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
-            autoIncrement: true,
             primaryKey: true,
+            defaultValue: DataTypes.UUIDV1,
             comment: "imageId",
         },
 
@@ -22,10 +22,10 @@ const Image = sequelize.define(
             allowNull: false,
             comment: "userId",
         },
-        url: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
-            comment: "链接",
+            comment: "名称",
         },
         height: {
             type: DataTypes.INTEGER,
@@ -41,26 +41,6 @@ const Image = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             comment: "文件大小",
-        },
-        thumbnailUrl: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            comment: "缩略图链接",
-        },
-        thumbnailHeight: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            comment: "缩略图高度",
-        },
-        thumbnailWidth: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            comment: "缩略图宽度",
-        },
-        thumbnailSize: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            comment: "缩略图文件大小",
         },
         ua: {
             type: DataTypes.TEXT,

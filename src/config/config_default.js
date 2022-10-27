@@ -6,9 +6,11 @@ const DB = {
     PASSWD: "", // 密码
 };
 
+const VERSION = "0.0.5";
+
 // 监听服务
 const HTTP = {
     PORT: "3005", // 端口
 };
 
-module.exports = { DB, HTTP };
+module.exports = { DB, HTTP, VERSION };

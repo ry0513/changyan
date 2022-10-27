@@ -11,16 +11,17 @@ router.post(
     "/",
     async (req, res, next) => {
         const [userId, userCode] = (req.headers["user-code"] || "").split("-");
-        const userInfo = await User.getUserInfo({
-            userId,
-            userCode,
-        });
-        if (userInfo) {
-            req.userInfo = userInfo;
-            next();
-        } else {
-            RUOYU.res.error(res, { data: "无效的身份码" });
+        if (userId !== undefined && userCode !== undefined) {
+            const userInfo = await User.getUserInfo({
+                userId,
+                userCode,
+            });
+            if (userInfo) {
+                req.userInfo = userInfo;
+                return next();
+            }
         }
+        RUOYU.res.error(res, { data: "无效的身份码" });
     },
     multer({
         fields: [{ name: "images", maxCount: 9 }],
@@ -62,76 +63,98 @@ router.post(
                     let iamgeInfo = {
                         userId,
                         dynamicId: dynamic.dynamicId,
-                        url: `/images/original/${
-                            RUOYU.uuid() + RUOYU.extname(item.originalname)
-                        }`,
-                        thumbnailUrl: `/images/thumbnail/${RUOYU.uuid()}.webp`,
+                        name: RUOYU.uuid() + RUOYU.extname(item.originalname),
                         ...clientInfo,
                     };
 
                     // 保存原图
                     fs.writeFileSync(
-                        RUOYU.path(__dirname, `../../${iamgeInfo.url}`),
+                        RUOYU.path(
+                            RUOYU.imagesPath,
+                            `./${userId}/${iamgeInfo.name}`
+                        ),
                         item.buffer
                     );
+                    const data = await sharp(item.buffer)
+                        .metadata()
+                        .then(({ size, width, height, pageHeight }) => {
+                            return {
+                                ...iamgeInfo,
+                                size,
+                                width,
+                                height: pageHeight || height,
+                            };
+                        });
+                    resolve(await Image.createImage(data));
+                    // console.log(metadata);
+                    // iamgeInfo = {
+                    //     ...iamgeInfo,
 
+                    //     // ...(await saveImage(item.buffer, iamgeInfo.url)),
+                    //     // ...(await saveImage(
+                    //     //     item.buffer,
+                    //     //     iamgeInfo.thumbnailUrl,
+                    //     //     true
+                    //     // )),
+                    // };
                     // 保存缩略图
 
-                    const saveImage = async (
-                        buffer,
-                        url,
-                        thumbnail = false
-                    ) => {
-                        const image = sharp(buffer, {
-                            animated: true,
-                        });
-                        const { width, height, pageHeight, size, pages } =
-                            await image.metadata();
+                    // const saveImage = async (
+                    //     buffer,
+                    //     url,
+                    //     thumbnail = false
+                    // ) => {
+                    //     const image = sharp(buffer, {
+                    //         animated: true,
+                    //     });
+                    //     const { width, height, pageHeight, size, pages } =
+                    //         await image.metadata();
 
-                        if (thumbnail) {
-                            const max = Math.min(
-                                Math.max(width, pageHeight || height) * 2,
-                                800
-                            );
-                            return image
-                                .resize({
-                                    width: images.length === 1 ? max : 280,
-                                    height: images.length === 1 ? max : 280,
-                                    fit:
-                                        images.length === 1
-                                            ? "inside"
-                                            : "cover",
-                                })
-                                .webp({
-                                    quality: 50,
-                                })
-                                .toFile(`./${url}`)
-                                .then(({ height, width, size }) => {
-                                    return {
-                                        thumbnailHeight:
-                                            height / (pages || 1) / 2,
-                                        thumbnailWidth: width / 2,
-                                        thumbnailSize: size,
-                                    };
-                                });
-                        } else {
-                            return {
-                                height: pageHeight || height,
-                                width,
-                                size,
-                            };
-                        }
-                    };
-                    iamgeInfo = {
-                        ...iamgeInfo,
-                        ...(await saveImage(item.buffer, iamgeInfo.url)),
-                        ...(await saveImage(
-                            item.buffer,
-                            iamgeInfo.thumbnailUrl,
-                            true
-                        )),
-                    };
-                    resolve(await Image.createImage(iamgeInfo));
+                    //     if (thumbnail) {
+                    //         const max = Math.min(
+                    //             Math.max(width, pageHeight || height) * 2,
+                    //             800
+                    //         );
+                    //         return image
+                    //             .resize({
+                    //                 width: images.length === 1 ? max : 280,
+                    //                 height: images.length === 1 ? max : 280,
+                    //                 fit:
+                    //                     images.length === 1
+                    //                         ? "inside"
+                    //                         : "cover",
+                    //             })
+                    //             .webp({
+                    //                 quality: 50,
+                    //             })
+                    //             .toFile(`./${url}`)
+                    //             .then(({ height, width, size }) => {
+                    //                 return {
+                    //                     thumbnailHeight:
+                    //                         height / (pages || 1) / 2,
+                    //                     thumbnailWidth: width / 2,
+                    //                     thumbnailSize: size,
+                    //                 };
+                    //             });
+                    //     } else {
+                    //         return {
+                    //             height: pageHeight || height,
+                    //             width,
+                    //             size,
+                    //         };
+                    //     }
+                    // };
+                    // iamgeInfo = {
+                    //     ...iamgeInfo,
+                    //     // ...(await saveImage(item.buffer, iamgeInfo.url)),
+                    //     // ...(await saveImage(
+                    //     //     item.buffer,
+                    //     //     iamgeInfo.thumbnailUrl,
+                    //     //     true
+                    //     // )),
+                    // };
+                    // console.log(iamgeInfo);
+                    // resolve(await Image.createImage(iamgeInfo));
                 });
             })(item);
         }

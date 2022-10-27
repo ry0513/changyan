@@ -33,16 +33,25 @@ const RUOYU = {
     mimeType: {
         image: ["image/png", "image/jpeg", "image/gif"],
     },
+    imagesPath: resolve(__dirname, "../../images"),
 
     // 客户端基本信息
     clientInfo: (req) => {
+        let ip =
+            req.headers["x-forwarded-for"] ||
+            req.connection.remoteAddress ||
+            req.socket.remoteAddress ||
+            req.connection.socket.remoteAddress ||
+            "未知";
+        if (ip.split(",").length > 0) {
+            ip = ip.split(",")[0];
+        }
         return {
             ua: req.headers["user-agent"],
-            ip: req.ips[0] || req.ip || "未知",
+            ip,
             city: "未知",
         };
     },
-
     // 路径拼接
     path: (dir, ...other) => resolve(dir, ...other),
     // 获取后缀名
@@ -50,7 +59,7 @@ const RUOYU = {
     // 日期
     dayjs: (date = new Date()) => dayjs(date),
     // UUID
-    uuid: () => UUID.v1().replace(/-/g, ""),
+    uuid: () => UUID.v1(),
     // 根据文件头获取类型
     fileType: async (buffer) => await fileType.fromBuffer(buffer),
     // 是否为图片
@@ -71,6 +80,16 @@ const RUOYU = {
             }
             resolve(true);
         });
+    },
+    // 检查文件/文件夹是否存在
+    isExist: (path, create = false) => {
+        const exists = fs.existsSync(path);
+        if (!exists && create) {
+            fs.mkdirSync(path);
+            return true;
+        } else {
+            return exists;
+        }
     },
 
     // 日志
@@ -100,13 +119,9 @@ if (!fs.existsSync(configPath)) {
     CONFIG = require(configPath);
 }
 
-// 创建图片文件夹
-const imagePath = resolve(__dirname, "../../images");
-if (!fs.existsSync(imagePath)) {
-    fs.mkdirSync(imagePath);
-    fs.mkdirSync(resolve(imagePath, "./original"));
-    fs.mkdirSync(resolve(imagePath, "./thumbnail"));
-    RUOYU.logInfo("创建图片[images]文件夹成功！");
-}
+// 创建图片总文件夹
+RUOYU.isExist(RUOYU.imagesPath, true);
+// 创建图片管理员子文件夹
+RUOYU.isExist(RUOYU.path(RUOYU.imagesPath, "./1"), true);
 
 module.exports = { ...RUOYU, ...CONFIG };

@@ -24,7 +24,12 @@ app.use("/api/", Api);
 app.use("/", Route);
 // 设置静态文件基础根目录
 app.use("/", express.static("./static"));
-
+app.use("*", (req, res) => {
+    res.status(404).json({
+        code: 404,
+        msg: "sorry, this page does not exist",
+    });
+});
 app.listen(RUOYU.HTTP.PORT, "0.0.0.0", () => {
     RUOYU.logInfo(`[HTTP 模块] http://localhost:${RUOYU.HTTP.PORT}`);
 });
