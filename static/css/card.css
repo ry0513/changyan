@@ -57,6 +57,10 @@
   max-width: 100% !important;
 }
 
+.card-img_item[class="card-img_item"] {
+  cursor: zoom-in;
+}
+
 .card-img_item.loading {
   background-color: var(--color-grey);
   background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%) var(--color-grey);

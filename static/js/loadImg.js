@@ -53,4 +53,40 @@
             timeout = setTimeout(loadImg, 300);
         }
     });
+
+    const $container = $ry(".container");
+    $container.on("click", "[class='card-img_item']", (e) => {
+        const $el = $ry(e.target);
+        const $parents = $el.parents(".card-img");
+        console.log(!$parents.attr("viewer"));
+
+        if (!$parents.attr("viewer")) {
+            console.log(444);
+            new Viewer($parents.get(), {
+                //   button: false,
+                //   movable: false,
+                initialCoverage: "1",
+                toggleOnDblclick: false,
+                slideOnTouch: false,
+                navbar: false,
+                title: false,
+                toolbar: false,
+                url: (image) => {
+                    return $ry(image).attr("data-url").split("@")[0] + "@";
+                },
+            }).view($el.attr("sort"));
+            // viewer;
+            $parents.attr("viewer", "true");
+        }
+        // console.log($el.attr("data-url"));
+        // console.log($el.parents(".card-img").get());
+
+        // console.log(document.querySelector(".card-img"));
+
+        // fileList.splice(`${$el.attr("sort")}`, 1);
+        // $el.remove();
+        // $ry(".release-img_item").each((el, index) => {
+        //     $ry(el).attr("sort", index);
+        // });
+    });
 })();

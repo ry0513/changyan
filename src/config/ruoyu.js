@@ -98,8 +98,7 @@ const RUOYU = {
     },
     logError: (msg, err) => {
         logger.error(msg);
-        err && logger.error(`原因: ${err.message}`);
-        process.exit(1);
+        err && logger.error(`原因: ${err.message.toString()}`);
     },
 
     // 响应
@@ -115,6 +114,7 @@ if (!fs.existsSync(configPath)) {
     RUOYU.logError("未检测到配置文件，已重新生成，位置src/config/config.js");
     RUOYU.logError("请打开文件配置后重新启动");
     process.exit(1);
+
 } else {
     CONFIG = require(configPath);
 }

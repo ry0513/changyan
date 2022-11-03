@@ -2,6 +2,12 @@
 /* ==================
     定义基础变量
   ==================== */
+@font-face {
+  font-family: "LXGWWenKaiGB";
+  src: url("/font/LXGWWenKaiMonoGB-Regular.ttf");
+  font-display: optional;
+}
+
 /* ==================
     去除默认
   ==================== */
@@ -12,7 +18,8 @@ body {
   font-size: 14px;
   line-height: 24px;
   color: #333;
-  font-family: "LXGW WenKai", sans-serif;
+  font-family: LXGWWenKaiGB, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  /* Project id 3703905 */
   text-align: justify;
   text-justify: inter-word;
   -webkit-tap-highlight-color: transparent;
@@ -328,13 +335,7 @@ a {
 @font-face {
   font-family: "iconfont";
   /* Project id 3703905 */
-  src: url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff2?t=1666322588177") format("woff2"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.woff?t=1666322588177") format("woff"), url("//at.alicdn.com/t/c/font_3703905_y7lozvcjh2b.ttf?t=1666322588177") format("truetype");
-}
-
-@font-face {
-  font-family: "iconfont";
-  /* Project id 3703905 */
-  src: url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff2?t=1666335918851") format("woff2"), url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.woff?t=1666335918851") format("woff"), url("//at.alicdn.com/t/c/font_3703905_xf8ifxtzncb.ttf?t=1666335918851") format("truetype");
+  src: url("/font/iconfont.woff2?t=1666335918851") format("woff2"), url("/font/iconfont.woff?t=1666335918851") format("woff"), url("/font/iconfont.ttf?t=1666335918851") format("truetype");
 }
 
 .iconfont {

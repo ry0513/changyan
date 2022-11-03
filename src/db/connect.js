@@ -27,6 +27,7 @@ sequelize
     })
     .catch((err) => {
         RUOYU.logError("[MYSQL 模块] 连接异常", err);
+        process.exit(1);
     });
 
 module.exports = {

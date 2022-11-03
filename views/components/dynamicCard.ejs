@@ -1,28 +1,24 @@
 <%_ dynamicData.forEach(item=> { _%>
 <div class="card radius bg-white mb-md p-md">
-    <div class="card-header mb-md flex-jc_sb">
-        <div class="card-header_left flex">
-            <div class="card-header_avatar mr-sm"></div>
-            <div>
-                <div><%= item.user.nickName %></div>
-                <div class="card-header_time"><%= dayjs(item.createdAt) %></div>
-            </div>
-        </div>
-        <!-- <div class="card-header_right"></div> -->
+  <div class="card-header mb-md flex-jc_sb">
+    <div class="card-header_left flex">
+      <div class="card-header_avatar mr-sm" style="background-image:url(<%= item.user.avatar %>)"></div>
+      <div>
+        <div><%= item.user.nickName %></div>
+        <div class="card-header_time"><%= dayjs(item.createdAt) %></div>
+      </div>
     </div>
-    <div class="card-text mb-sm">
-        <div><%= item.content %></div>
-    </div>
-    <% if (item.images.length > 0) { %>
-    <div class="card-img<%= item.images.length>1?' grid9':'' %>">
-        <% item.images.forEach(img=> { %>
-        <div
-            data-url="<%= imagesUrl(img,item.images.length>1) %>"
-            class="card-img_item loadImg loading"
-            style="<%= item.images.length>1?'':`height: ${ format(img.width, img.height).h}px;width: ${format(img.width, img.height).w}px;` %>"
-        ></div>
-        <% }) %>
-    </div>
-    <% } %>
+    <!-- <div class="card-header_right"></div> -->
+  </div>
+  <div class="card-text mb-sm">
+    <div><%= item.content %></div>
+  </div>
+  <%_ if (item.images.length > 0) { _%>
+  <div class="card-img<%= item.images.length>1?' grid9':'' %>">
+    <%_ item.images.forEach((img,i)=> { _%>
+    <div data-url="<%= imagesUrl(img,item.images.length>1) %>" sort="<%= i %>" class="card-img_item loadImg loading" style="<%= item.images.length>1?'':`height: ${ format(img.width, img.height).h}px;width: ${format(img.width, img.height).w}px;` %>"></div>
+    <%_ }) _%>
+  </div>
+  <%_ } _%>
 </div>
 <%_ }) _%>

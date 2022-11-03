@@ -12,9 +12,16 @@ $grey: #ededed;
 $red: #ff5722;
 $black: #373737;
 
+@font-face {
+    font-family: "LXGWWenKaiGB";
+    src: url("/font/LXGWWenKaiMonoGB-Regular.ttf");
+    font-display: optional;
+}
+
 /* ==================
     去除默认
   ==================== */
+
 body {
     padding: 0;
     margin: 0;
@@ -22,7 +29,10 @@ body {
     font-size: 14px;
     line-height: 24px;
     color: #333;
-    font-family: "LXGW WenKai", sans-serif;
+    font-family: LXGWWenKaiGB, -apple-system, BlinkMacSystemFont, Segoe UI,
+        Roboto, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei,
+        Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol; /* Project id 3703905 */
     // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     //     Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei,
     //     Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji,

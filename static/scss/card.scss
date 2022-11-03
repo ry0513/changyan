@@ -49,6 +49,9 @@
     background: 50% 50% no-repeat;
     background-size: cover;
     max-width: 100% !important;
+    &[class="card-img_item"] {
+        cursor: zoom-in;
+    }
     &.loading {
         background-color: var(--color-grey);
         background: linear-gradient(
